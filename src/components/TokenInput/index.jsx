@@ -7,15 +7,15 @@ const TokenInput = () => {
       <input
         id="token"
         className={styles.input}
-        inputmode="decimal"
-        autocomplete="off"
-        autocorrect="off"
+        inputMode="decimal"
+        autoComplete="off"
+        autoCorrect="off"
         type="text"
         pattern="^[0-9]*[.,]?[0-9]*$"
         placeholder="0.0"
-        minlength="1"
-        maxlength="79"
-        spellcheck="false"
+        minLength="1"
+        maxLength="79"
+        spellCheck="false"
       />
       <button className={styles.changeAsset}>
         <img

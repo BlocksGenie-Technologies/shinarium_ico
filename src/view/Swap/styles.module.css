@@ -1,6 +1,7 @@
 .swapContainer {
   padding: 10px;
   min-width: 400px;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
