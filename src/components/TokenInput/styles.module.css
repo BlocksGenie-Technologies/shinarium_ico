@@ -1,0 +1,25 @@
+.inputWrapper {
+  background-color: var(--background-soft);
+  width: 100%;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  margin: 5px auto;
+}
+
+.input {
+  border: none;
+  background: inherit;
+  font-size: 25px;
+}
+
+.changeAsset {
+  background-color: var(--background-mid);
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+.changeAsset:hover {
+  background-color: var(--background-mid-hover);
+}

@@ -1,6 +1,12 @@
-.app{
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+:root {
+  --background-soft: #f7f8fa;
+  --background-mid: #edeef2;
+  --background-mid-hover: #ced0d9;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

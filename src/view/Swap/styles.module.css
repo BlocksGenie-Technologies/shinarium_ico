@@ -1,9 +1,10 @@
 .swapContainer{
+    padding: 10px;
     min-width: 400px;
-    border: 1px solid rgb(199, 199, 199);
-    border-radius: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    border: 1px solid rgb(199, 199, 199);
+    border-radius: 20px;
 }
