@@ -1,5 +1,6 @@
 import React from "react";
 import InterchangeButton from "../../components/InterchangeButton";
+import MainButton from "../../components/MainButton";
 import TokenInput from "../../components/TokenInput";
 import styles from "./styles.module.css";
 
@@ -9,7 +10,7 @@ const Swap = () => {
       <TokenInput />
       <InterchangeButton />
       <TokenInput />
-      <button onClick={(e) => e.preventDefault()}>Connect wallet</button>
+      <MainButton />
     </div>
   );
 };

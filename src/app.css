@@ -1,4 +1,7 @@
 :root {
+  --primary-font: #d50066;
+  --primary-disabled: #fdeaf1;
+  --primary-disabled-hover: #fcdce8;
   --background-soft: #f7f8fa;
   --background-mid: #edeef2;
   --background-mid-hover: #ced0d9;
