@@ -1,0 +1,14 @@
+.buttonContainer {
+  position: relative;
+}
+.button {
+  position: absolute;
+  border: 5px solid white;
+  border-radius: 8px;
+  transform: translate(-50%, -50%);
+  padding: 5px;
+  background-color: var(--background-mid);
+}
+.button:hover {
+  background-color: var(--background-mid-hover);
+}
