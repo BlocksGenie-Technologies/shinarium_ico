@@ -1,19 +1,20 @@
-import React, { useState } from "react";
-import LateralPanel from "../LateralPanel";
+import React from "react";
+
+import useLateralPanel from "../../hooks/useLateralPanel";
 import styles from "./styles.module.css";
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [openPanel] = useLateralPanel({
+    title: "Settings",
+    content: <div>Hello</div>
+  });
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Swap</h1>
-      <button
-        className={styles.iconButton}
-        onClick={() => setIsOpen((prev) => !prev)}
-      >
+      <button className={styles.iconButton} onClick={() => openPanel()}>
         <i className="fas fa-cog"></i>
       </button>
-      <LateralPanel isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </div>
   );
 };
