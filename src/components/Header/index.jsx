@@ -1,12 +1,13 @@
 import React from "react";
 
 import useLateralPanel from "../../hooks/useLateralPanel";
+import Settings from "../Settings";
 import styles from "./styles.module.css";
 
 const Header = () => {
   const [openPanel] = useLateralPanel({
     title: "Settings",
-    content: <div>Hello</div>
+    content: <Settings />
   });
 
   return (

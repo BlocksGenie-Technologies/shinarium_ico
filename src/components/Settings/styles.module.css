@@ -1,0 +1,23 @@
+.container {
+  padding: 7px;
+}
+.inputFieldContainer {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.labelContainer {
+  flex: 2;
+}
+.inputContainer {
+  flex: 1;
+  text-align: right;
+}
+.inputContainer input {
+  width: 100%;
+  padding: 7px;
+  text-align: right;
+  border-radius: 5px;
+  border: 1px solid rgb(201, 199, 199);
+}
