@@ -6,3 +6,8 @@
 button:hover {
   cursor: pointer;
 }
+
+ul {
+  padding: 6px 0;
+  list-style-type: none;
+}

@@ -32,7 +32,7 @@ const LateralPanel = ({ isOpen, onClose, title, children }) => {
               </button>
               <h2>{title}</h2>
             </div>
-            {children}
+            <div className={styles.contentContainer}>{children}</div>
           </div>
         </div>
       )}

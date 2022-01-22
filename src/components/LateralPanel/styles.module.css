@@ -18,6 +18,8 @@
   top: 0;
   bottom: 0;
   width: 75%;
+  display: flex;
+  flex-direction: column;
   animation-duration: 0.7s;
   animation-fill-mode: forwards;
   box-shadow: -74px 0px 121px -31px rgba(0, 0, 0, 0.24);
@@ -44,6 +46,11 @@
   font-weight: 500;
   margin: 0 10px;
   font-style: italic;
+}
+.contentContainer {
+  flex: 1;
+  max-height: 100%;
+  overflow-y: hidden;
 }
 .panelOpen {
   animation-name: panelMoveForward;

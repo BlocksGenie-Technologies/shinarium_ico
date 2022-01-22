@@ -1,0 +1,42 @@
+.container {
+  max-height: 100%;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+}
+.inputSearch {
+  display: flex;
+  width: 100%;
+  padding: 8px 6px;
+  border-radius: 8px;
+  border: 1px solid rgb(171, 169, 169);
+}
+
+.listContainer {
+  flex: 1;
+  padding-bottom: 10px;
+  overflow-y: scroll;
+}
+.listContainer li {
+  display: flex;
+}
+.tokenCard {
+  display: flex;
+  margin-bottom: 3px;
+  margin-right: 3px;
+  padding: 5px;
+  width: 100%;
+  text-align: left;
+  border: 1px solid rgb(235, 234, 234);
+  background: none;
+  border-radius: 5px;
+}
+.tokenCard:hover {
+  background-color: var(--background-mid-hover);
+}
+.walletDirection {
+  font-style: italic;
+  font-weight: 100;
+  font-size: 11px;
+  color: grey;
+}
