@@ -12,7 +12,9 @@
   background: inherit;
   font-size: 25px;
 }
-
+.input:focus-visible {
+  outline: none;
+}
 .changeAsset {
   background-color: var(--background-mid);
   border: none;
