@@ -1,7 +1,13 @@
 import React from "react";
+import useLateralPanel from "../../hooks/useLateralPanel";
 import styles from "./styles.module.css";
 
 const TokenInput = () => {
+  const [openPanel] = useLateralPanel({
+    title: "Select a token",
+    content: <div>Select token content</div>
+  });
+
   return (
     <div className={styles.inputWrapper}>
       <input
@@ -17,7 +23,7 @@ const TokenInput = () => {
         maxLength="79"
         spellCheck="false"
       />
-      <button className={styles.changeAsset}>
+      <button className={styles.changeAsset} onClick={openPanel}>
         <img
           width={25}
           src="https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880"
