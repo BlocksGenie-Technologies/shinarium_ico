@@ -1,5 +1,5 @@
 import Swap from "./view/Swap";
-import styles from "./app.css";
+import "./app.css";
 
 function App() {
   return (

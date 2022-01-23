@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 
 import coingecko from "../utils/coingecko";
 import debounce from "../utils/debounce";
@@ -6,7 +6,7 @@ import debounce from "../utils/debounce";
 const useSearchToken = () => {
   const [query, setQuery] = useState("");
   const [coins, setCoins] = useState([]);
-  const [isLoading, setIsLoading] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const search = async (value) => {
     const { coins } = await coingecko.search(value);
