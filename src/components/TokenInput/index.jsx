@@ -3,7 +3,7 @@ import useLateralPanel from "../../hooks/useLateralPanel";
 import SelectToken from "../SelectToken";
 import styles from "./styles.module.css";
 
-const TokenInput = () => {
+const TokenInput = ({ tokenAddress }) => {
   const [openPanel] = useLateralPanel({
     title: "Select a token",
     content: <SelectToken />
@@ -24,15 +24,25 @@ const TokenInput = () => {
         maxLength="79"
         spellCheck="false"
       />
-      <button className={styles.changeAsset} onClick={openPanel}>
-        <img
-          width={25}
-          src="https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880"
-          alt=""
-        />
-        <span>ETH</span>
-        <span>▼</span>
-      </button>
+      {tokenAddress ? (
+        <button
+          className={`${styles.changeAsset} ${styles.noAssetButton}`}
+          onClick={openPanel}
+        >
+          <span>Select a token</span>
+          <span>▼</span>
+        </button>
+      ) : (
+        <button className={styles.changeAsset} onClick={openPanel}>
+          <img
+            width={25}
+            src="https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880"
+            alt=""
+          />
+          <span>ETH</span>
+          <span>▼</span>
+        </button>
+      )}
     </div>
   );
 };

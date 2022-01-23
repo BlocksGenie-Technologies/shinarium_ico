@@ -4,6 +4,7 @@
   border-radius: 20px;
   padding: 20px;
   display: flex;
+  justify-content: space-between;
   margin: 5px auto;
 }
 
@@ -24,4 +25,15 @@
 }
 .changeAsset:hover {
   background-color: var(--background-mid-hover);
+}
+.noAssetButton {
+  background-color: var(--background-primary);
+  color: white;
+}
+.noAssetButton span {
+  font-size: 15px;
+  margin: 0 2px;
+}
+.noAssetButton:hover {
+  background-color: var(--background-primary-hover);
 }

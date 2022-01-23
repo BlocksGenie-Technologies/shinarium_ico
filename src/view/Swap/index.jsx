@@ -25,7 +25,7 @@ const Swap = () => {
             <Header />
             <TokenInput />
             <InterchangeButton />
-            <TokenInput />
+            <TokenInput tokenAddress="0x0" />
             <MainButton />
           </LateralPanelProvider>
         </AuthProvider>
