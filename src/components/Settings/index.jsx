@@ -5,7 +5,7 @@ const InputField = ({ title }) => {
   return (
     <div className={styles.inputFieldContainer}>
       <div className={styles.labelContainer}>
-        <label for={`${title.replaceAll(/\s/g, "-")}-input`}>{title}</label>
+        <label htmlFor={`${title.replaceAll(/\s/g, "-")}-input`}>{title}</label>
       </div>
       <div className={styles.inputContainer}>
         <input
