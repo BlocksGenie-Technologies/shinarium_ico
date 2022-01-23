@@ -22,6 +22,7 @@
 }
 .tokenCard {
   display: flex;
+  align-items: center;
   margin-bottom: 3px;
   margin-right: 3px;
   padding: 5px;
@@ -33,6 +34,9 @@
 }
 .tokenCard:hover {
   background-color: var(--background-mid-hover);
+}
+.symbolContainer {
+  margin-left: 8px;
 }
 .walletDirection {
   font-style: italic;

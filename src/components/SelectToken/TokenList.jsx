@@ -1,39 +1,26 @@
 import React from "react";
 import styles from "./styles.module.css";
 
-const Token = () => (
+const Token = ({ name, symbol, thumb }) => (
   <button className={styles.tokenCard}>
     <div>
-      <img
-        width={30}
-        src="https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880"
-        alt=""
-      />
+      <img width={25} src={thumb} alt="" />
     </div>
-    <div>
-      <p>ETH</p>
-      <span className={styles.walletDirection}>
-        0x1243kj56hjk3h6k34GRG32r2FEG3432
-      </span>
+    <div className={styles.symbolContainer}>
+      <p>{symbol}</p>
+      <span className={styles.walletDirection}>{name}</span>
     </div>
   </button>
 );
 
-const TokenList = () => {
+const TokenList = ({ coins }) => {
   return (
     <ul className={styles.listContainer}>
-      <li>
-        <Token />
-      </li>
-      <li>
-        <Token />
-      </li>
-      <li>
-        <Token />
-      </li>
-      <li>
-        <Token />
-      </li>
+      {coins.map(({ id, name, symbol, thumb }) => (
+        <li key={id}>
+          <Token name={name} symbol={symbol} thumb={thumb} />
+        </li>
+      ))}
     </ul>
   );
 };
