@@ -4,23 +4,10 @@ import Header from "./../components/Header";
 import TokenInput from "./../components/TokenInput";
 import InterchangeButton from "./../components/InterchangeButton";
 import MainButton from "./../components/MainButton";
-import SelectToken from "./../components/SelectToken";
-import useLateralPanel from "./../hooks/useLateralPanel";
 
 const App = () => {
   const [inputToken, setInputToken] = useState(null);
-  const [openPanelInput] = useLateralPanel({
-    title: "Select a token",
-    content: <SelectToken />,
-    onClose: (tokenData) => setInputToken(tokenData)
-  });
-
   const [outputToken, setOutputToken] = useState(null);
-  const [openPanelOutput] = useLateralPanel({
-    title: "Select a token",
-    content: <SelectToken />,
-    onClose: (tokenData) => setOutputToken(tokenData)
-  });
 
   const swapInputAndOutput = () => {
     const inputTokenCopy = { ...inputToken };
@@ -31,9 +18,9 @@ const App = () => {
   return (
     <>
       <Header />
-      <TokenInput tokenData={inputToken} changeToken={openPanelInput} />
+      <TokenInput token={inputToken} setToken={setInputToken} />
       <InterchangeButton onClick={swapInputAndOutput} />
-      <TokenInput tokenData={outputToken} changeToken={openPanelOutput} />
+      <TokenInput token={outputToken} setToken={setOutputToken} />
       <MainButton />
     </>
   );

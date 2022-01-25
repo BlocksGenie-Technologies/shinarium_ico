@@ -1,7 +1,15 @@
 import React from "react";
+import SelectToken from "../SelectToken";
+import useLateralPanel from "../../hooks/useLateralPanel";
 import styles from "./styles.module.css";
 
-const TokenInput = ({ tokenData, changeToken }) => {
+const TokenInput = ({ token, setToken }) => {
+  const [openPanel] = useLateralPanel({
+    title: "Select a token",
+    content: <SelectToken />,
+    onClose: (token) => setToken(token)
+  });
+
   return (
     <div className={styles.inputWrapper}>
       <input
@@ -17,18 +25,16 @@ const TokenInput = ({ tokenData, changeToken }) => {
         maxLength="79"
         spellCheck="false"
       />
-      {tokenData ? (
-        <button className={styles.changeAsset} onClick={changeToken}>
-          <img width={22} src={tokenData.image.thumb} alt="" />
-          <span className={styles.symbol}>
-            {tokenData.symbol.toUpperCase()}
-          </span>
+      {token ? (
+        <button className={styles.changeAsset} onClick={openPanel}>
+          <img width={22} src={token.image.thumb} alt="" />
+          <span className={styles.symbol}>{token.symbol.toUpperCase()}</span>
           <span>▼</span>
         </button>
       ) : (
         <button
           className={`${styles.changeAsset} ${styles.noAssetButton}`}
-          onClick={changeToken}
+          onClick={openPanel}
         >
           <span>Select a token</span>
           <span>▼</span>
