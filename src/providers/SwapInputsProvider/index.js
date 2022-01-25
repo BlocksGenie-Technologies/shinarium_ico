@@ -9,7 +9,7 @@ const SwapInputsProvider = ({ children }) => {
   const [inputAmount, setInputAmount] = useState("");
   const [outputAmount, setOutputAmount] = useState("");
 
-  const swapInputAndOutput = () => {
+  const interchangeInputAndOutput = () => {
     const inputTokenCopy = inputToken ? { ...inputToken } : null;
     setInputToken(outputToken);
     setOutputToken(inputTokenCopy);
@@ -28,7 +28,7 @@ const SwapInputsProvider = ({ children }) => {
     setInputAmount,
     outputAmount,
     setOutputAmount,
-    swapInputAndOutput
+    interchangeInputAndOutput
   };
 
   return (
