@@ -3,7 +3,7 @@ import SelectToken from "../SelectToken";
 import useLateralPanel from "../../hooks/useLateralPanel";
 import styles from "./styles.module.css";
 
-const TokenInput = ({ token, setToken }) => {
+const TokenInput = ({ token, setToken, amount, setAmount }) => {
   const [openPanel] = useLateralPanel({
     title: "Select a token",
     content: <SelectToken />,
@@ -24,6 +24,8 @@ const TokenInput = ({ token, setToken }) => {
         minLength="1"
         maxLength="79"
         spellCheck="false"
+        value={amount}
+        onChange={(e) => setAmount(e.target.value)}
       />
       {token ? (
         <button className={styles.changeAsset} onClick={openPanel}>
