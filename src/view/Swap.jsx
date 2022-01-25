@@ -13,7 +13,7 @@ const App = () => {
   const [outputAmount, setOutputAmount] = useState("");
 
   const swapInputAndOutput = () => {
-    const inputTokenCopy = { ...inputToken };
+    const inputTokenCopy = inputToken ? { ...inputToken } : null;
     setInputToken(outputToken);
     setOutputToken(inputTokenCopy);
 
