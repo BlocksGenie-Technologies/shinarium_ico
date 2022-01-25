@@ -1,33 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./styles.module.css";
 
-const LateralPanel = ({ isOpen, onClose, title, children }) => {
+const LateralPanel = ({ isOpen, onClosePanel, title, children }) => {
   const [isClosing, setIsClosing] = useState(false);
-
-  const handleClose = () => {
-    setIsClosing(true);
-  };
+  const [isClosed, setIsClosed] = useState(true);
 
   const onAnimationEnd = () => {
     if (isClosing) {
-      onClose();
-      setIsClosing(false);
+      onClosePanel();
+      setIsClosed(true);
     }
   };
 
+  useEffect(() => {
+    if (isOpen) {
+      setIsClosing(false);
+      setIsClosed(false);
+    } else if (!isClosed) {
+      setIsClosing(true);
+    }
+  }, [isOpen]);
+
   return (
     <>
-      {isOpen && (
-        <div className={styles.container} onClick={handleClose}>
+      {isClosed ? null : (
+        <div className={styles.container} onClick={onClosePanel}>
           <div
             className={`${styles.panel} ${isClosing && styles.panelClose} ${
-              isOpen && styles.panelOpen
+              styles.panelOpen
             }`}
             onClick={(e) => e.stopPropagation()}
             onAnimationEnd={onAnimationEnd}
           >
             <div className={styles.titleContainer}>
-              <button className={styles.backButton} onClick={handleClose}>
+              <button className={styles.backButton} onClick={onClosePanel}>
                 ←
               </button>
               <h2>{title}</h2>

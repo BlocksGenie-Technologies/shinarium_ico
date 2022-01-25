@@ -30,9 +30,9 @@ const LateralPanelProvider = ({ children }) => {
   );
 
   return (
-    <LateralPanelContext.Provider value={{ onOpenPanel, onClosePanel }}>
+    <LateralPanelContext.Provider value={{ onOpenPanel }}>
       {children}
-      <LateralPanel isOpen={isOpen} title={title} onClose={onClosePanel}>
+      <LateralPanel isOpen={isOpen} title={title} onClosePanel={onClosePanel}>
         {content}
       </LateralPanel>
     </LateralPanelContext.Provider>
