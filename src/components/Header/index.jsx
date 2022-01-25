@@ -26,7 +26,7 @@ const Header = () => {
           className={`${styles.iconButton} ${!account && styles.iconExitHide}`}
           onClick={logout}
         >
-          <i class="fas fa-sign-out-alt"></i>
+          <i className="fas fa-sign-out-alt"></i>
         </button>
       </div>
     </div>

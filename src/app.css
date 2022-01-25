@@ -16,3 +16,19 @@
   align-items: center;
   background-color: #f7f7f7e0;
 }
+
+.swapContainer {
+  padding: 10px;
+  min-width: 400px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid rgb(199, 199, 199);
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 1px -1px 400px -31px rgba(0, 0, 0, 0.24);
+  -webkit-box-shadow: 1px -1px 400px -31px rgba(0, 0, 0, 0.24);
+  -moz-box-shadow: 1px -1px 400px -31px rgba(0, 0, 0, 0.24);
+}
