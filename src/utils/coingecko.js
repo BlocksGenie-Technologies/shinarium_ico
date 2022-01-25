@@ -15,7 +15,7 @@ const search = async (query) => {
 const coinById = (id) => {
   if (!id) return;
   const data = fetchData(
-    `${API_URL}/${id}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`
+    `${API_URL}/coins/${id}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`
   );
   return data;
 };
