@@ -12,4 +12,8 @@ const useLateralPanel = ({ content, title, onClose }) => {
   return [openPanel];
 };
 
+useLateralPanel.defaultProps = {
+  onClose: () => {}
+};
+
 export default useLateralPanel;
