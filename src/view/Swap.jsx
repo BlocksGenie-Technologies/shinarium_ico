@@ -22,11 +22,17 @@ const App = () => {
     onClose: (tokenData) => setOutputToken(tokenData)
   });
 
+  const swapInputAndOutput = () => {
+    const inputTokenCopy = { ...inputToken };
+    setInputToken(outputToken);
+    setOutputToken(inputTokenCopy);
+  };
+
   return (
     <>
       <Header />
       <TokenInput tokenData={inputToken} changeToken={openPanelInput} />
-      <InterchangeButton />
+      <InterchangeButton onClick={swapInputAndOutput} />
       <TokenInput tokenData={outputToken} changeToken={openPanelOutput} />
       <MainButton />
     </>
