@@ -1,26 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 
 import Header from "./../components/Header";
 import TokenInput from "./../components/TokenInput";
 import InterchangeButton from "./../components/InterchangeButton";
 import MainButton from "./../components/MainButton";
+import useSwapInputs from "../hooks/useSwapInputs";
 
 const App = () => {
-  const [inputToken, setInputToken] = useState(null);
-  const [outputToken, setOutputToken] = useState(null);
-
-  const [inputAmount, setInputAmount] = useState("");
-  const [outputAmount, setOutputAmount] = useState("");
-
-  const swapInputAndOutput = () => {
-    const inputTokenCopy = inputToken ? { ...inputToken } : null;
-    setInputToken(outputToken);
-    setOutputToken(inputTokenCopy);
-
-    const inputAmountCopy = inputAmount;
-    setInputAmount(outputAmount);
-    setOutputAmount(inputAmountCopy);
-  };
+  const {
+    inputToken,
+    setInputToken,
+    outputToken,
+    setOutputToken,
+    inputAmount,
+    setInputAmount,
+    outputAmount,
+    setOutputAmount
+  } = useSwapInputs();
 
   return (
     <>
@@ -31,7 +27,7 @@ const App = () => {
         amount={inputAmount}
         setAmount={setInputAmount}
       />
-      <InterchangeButton onClick={swapInputAndOutput} />
+      <InterchangeButton />
       <TokenInput
         token={outputToken}
         setToken={setOutputToken}
