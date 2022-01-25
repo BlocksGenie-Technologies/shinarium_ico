@@ -8,19 +8,26 @@ const LateralPanelProvider = ({ children }) => {
   const [content, setContent] = useState(null);
   const [title, setTitle] = useState("");
 
+  const onClosePanel = useCallback(() => {
+    setIsOpen(false);
+    setContent(null);
+  }, []);
+
   const onOpenPanel = useCallback(
-    ({ content: panelContent, title: panelTitle }) => {
-      setContent(panelContent);
+    ({ content: panelContent, title: panelTitle, onClose }) => {
+      const wrappedOnClose = (args) => {
+        onClose(args);
+        onClosePanel();
+      };
+      const contentWithProps = React.cloneElement(panelContent, {
+        onClose: wrappedOnClose
+      });
+      setContent(contentWithProps);
       setTitle(panelTitle);
       setIsOpen(true);
     },
     []
   );
-
-  const onClosePanel = useCallback(() => {
-    setIsOpen(false);
-    setContent(null);
-  }, []);
 
   return (
     <LateralPanelContext.Provider value={{ onOpenPanel, onClosePanel }}>

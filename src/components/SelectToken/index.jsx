@@ -3,7 +3,7 @@ import useSearchToken from "../../hooks/useSearchToken";
 import styles from "./styles.module.css";
 import TokenList from "./TokenList";
 
-const SelectToken = () => {
+const SelectToken = ({ onClose }) => {
   const { query, coins, isLoading, handleChangeQuery } = useSearchToken();
 
   const waitingForType = !query;
@@ -21,7 +21,9 @@ const SelectToken = () => {
       />
       {waitingForType && <p>please type the name of the token</p>}
       {isLoading && <p>loading</p>}
-      {successResult && <TokenList coins={coins} />}
+      {successResult && (
+        <TokenList coins={coins} handleCoinSelected={onClose} />
+      )}
       {emptyResult && <p>Sorry, there's no results.</p>}
     </div>
   );

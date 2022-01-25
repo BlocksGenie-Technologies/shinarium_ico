@@ -1,14 +1,7 @@
 import React from "react";
-import useLateralPanel from "../../hooks/useLateralPanel";
-import SelectToken from "../SelectToken";
 import styles from "./styles.module.css";
 
-const TokenInput = ({ tokenAddress }) => {
-  const [openPanel] = useLateralPanel({
-    title: "Select a token",
-    content: <SelectToken />
-  });
-
+const TokenInput = ({ tokenData, changeToken }) => {
   return (
     <div className={styles.inputWrapper}>
       <input
@@ -24,22 +17,20 @@ const TokenInput = ({ tokenAddress }) => {
         maxLength="79"
         spellCheck="false"
       />
-      {tokenAddress ? (
-        <button
-          className={`${styles.changeAsset} ${styles.noAssetButton}`}
-          onClick={openPanel}
-        >
-          <span>Select a token</span>
+      {tokenData ? (
+        <button className={styles.changeAsset} onClick={changeToken}>
+          <img width={22} src={tokenData.image.thumb} alt="" />
+          <span className={styles.symbol}>
+            {tokenData.symbol.toUpperCase()}
+          </span>
           <span>▼</span>
         </button>
       ) : (
-        <button className={styles.changeAsset} onClick={openPanel}>
-          <img
-            width={25}
-            src="https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880"
-            alt=""
-          />
-          <span>ETH</span>
+        <button
+          className={`${styles.changeAsset} ${styles.noAssetButton}`}
+          onClick={changeToken}
+        >
+          <span>Select a token</span>
           <span>▼</span>
         </button>
       )}
