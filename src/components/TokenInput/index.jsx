@@ -1,5 +1,5 @@
 import React from "react";
-import SelectToken from "../SelectToken";
+import SelectToken from "./components/SelectToken";
 import useLateralPanel from "../../hooks/useLateralPanel";
 import styles from "./styles.module.css";
 

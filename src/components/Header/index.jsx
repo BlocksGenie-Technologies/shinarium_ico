@@ -3,7 +3,7 @@ import { useWeb3React } from "@web3-react/core";
 
 import useAuth from "../../hooks/useAuth";
 import useLateralPanel from "../../hooks/useLateralPanel";
-import Settings from "../Settings";
+import Settings from "./Settings";
 import styles from "./styles.module.css";
 
 const Header = () => {
