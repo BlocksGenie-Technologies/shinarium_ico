@@ -22,11 +22,14 @@ const useSearchToken = () => {
     searchDebounce(param);
   };
 
+  const getCoinDetailsById = async (id) => await coingecko.coinById(id);
+
   return {
     query,
     handleChangeQuery,
     coins,
-    isLoading
+    isLoading,
+    getCoinDetailsById
   };
 };
 

@@ -14,26 +14,19 @@ const Token = ({ name, symbol, thumb, onClick }) => (
   </button>
 );
 
-const TokenList = ({ coins, handleCoinSelected }) => {
-  const handleOnClick = async (id) => {
-    const coinData = await coingecko.coinById(id);
-    handleCoinSelected(coinData);
-  };
-
-  return (
-    <ul className={styles.listContainer}>
-      {coins.map(({ id, name, symbol, thumb }) => (
-        <li key={id}>
-          <Token
-            name={name}
-            symbol={symbol}
-            thumb={thumb}
-            onClick={() => handleOnClick(id)}
-          />
-        </li>
-      ))}
-    </ul>
-  );
-};
+const TokenList = ({ coins, handleCoinSelected }) => (
+  <ul className={styles.listContainer}>
+    {coins.map(({ id, name, symbol, thumb }) => (
+      <li key={id}>
+        <Token
+          name={name}
+          symbol={symbol}
+          thumb={thumb}
+          onClick={() => handleCoinSelected(id)}
+        />
+      </li>
+    ))}
+  </ul>
+);
 
 export default TokenList;
