@@ -1,11 +1,12 @@
 import React from "react";
 import { Web3ReactProvider } from "@web3-react/core";
 import { Web3Provider } from "@ethersproject/providers";
+import { Provider } from "react-redux";
 
 import LateralPanelProvider from "./providers/LateralPanelProvider";
 import AuthProvider from "./providers/AuthProvider";
-import SwapActionsHandlerProvider from "./providers/SwapActionsHandlerProvider";
 import Swap from "./view/Swap";
+import { store } from "./store";
 import "./app.css";
 
 const getLibrary = (provider) => {
@@ -20,11 +21,11 @@ const App = () => {
       <div className="swapContainer">
         <Web3ReactProvider getLibrary={getLibrary}>
           <AuthProvider>
-            <SwapActionsHandlerProvider>
+            <Provider store={store}>
               <LateralPanelProvider>
                 <Swap />
               </LateralPanelProvider>
-            </SwapActionsHandlerProvider>
+            </Provider>
           </AuthProvider>
         </Web3ReactProvider>
       </div>

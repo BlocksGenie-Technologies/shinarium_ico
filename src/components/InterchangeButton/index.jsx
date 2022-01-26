@@ -1,12 +1,12 @@
 import React from "react";
-import useSwapActionsHandler from "../../hooks/useSwapActionsHandler";
+import { useSwapActionsHandler } from "./../../store/swap/hooks";
 import styles from "./styles.module.css";
 
 const InterchangeButton = () => {
-  const { interchangeInputAndOutput } = useSwapActionsHandler();
+  const { switchInputAndOutput } = useSwapActionsHandler();
   return (
     <div className={styles.buttonContainer}>
-      <button className={styles.button} onClick={interchangeInputAndOutput}>
+      <button className={styles.button} onClick={switchInputAndOutput}>
         ▼▲
       </button>
     </div>

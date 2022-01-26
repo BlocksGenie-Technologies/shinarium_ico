@@ -4,7 +4,7 @@ import Header from "./../components/Header";
 import TokenInput from "./../components/TokenInput";
 import InterchangeButton from "./../components/InterchangeButton";
 import MainButton from "./../components/MainButton";
-import useSwapActionsHandler from "../hooks/useSwapActionsHandler";
+import { useSwapActionsHandler } from "../store/swap/hooks";
 
 const App = () => {
   const {
