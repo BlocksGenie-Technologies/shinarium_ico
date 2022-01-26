@@ -1,12 +1,12 @@
 import React from "react";
-import SelectToken from "./components/SelectToken";
+import SearchToken from "./components/SearchToken";
 import useLateralPanel from "../../hooks/useLateralPanel";
 import styles from "./styles.module.css";
 
 const TokenInput = ({ token, setToken, amount, setAmount }) => {
   const [openPanel] = useLateralPanel({
-    title: "Select a token",
-    content: <SelectToken />,
+    title: "Search a token",
+    content: <SearchToken />,
     onClose: (token) => setToken(token)
   });
 

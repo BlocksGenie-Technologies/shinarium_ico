@@ -3,7 +3,7 @@ import useSearchToken from "../../../../hooks/useSearchToken";
 import styles from "./styles.module.css";
 import TokenList from "../TokenList";
 
-const SelectToken = ({ onClose }) => {
+const SearchToken = ({ onClose }) => {
   const { query, coins, isLoading, handleChangeQuery } = useSearchToken();
 
   const waitingForType = !query;
@@ -29,4 +29,4 @@ const SelectToken = ({ onClose }) => {
   );
 };
 
-export default SelectToken;
+export default SearchToken;
