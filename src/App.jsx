@@ -4,7 +4,7 @@ import { Web3Provider } from "@ethersproject/providers";
 
 import LateralPanelProvider from "./providers/LateralPanelProvider";
 import AuthProvider from "./providers/AuthProvider";
-import SwapInputsProvider from "./providers/SwapInputsProvider";
+import SwapActionsHandlerProvider from "./providers/SwapActionsHandlerProvider";
 import Swap from "./view/Swap";
 import "./app.css";
 
@@ -20,11 +20,11 @@ const App = () => {
       <div className="swapContainer">
         <Web3ReactProvider getLibrary={getLibrary}>
           <AuthProvider>
-            <SwapInputsProvider>
+            <SwapActionsHandlerProvider>
               <LateralPanelProvider>
                 <Swap />
               </LateralPanelProvider>
-            </SwapInputsProvider>
+            </SwapActionsHandlerProvider>
           </AuthProvider>
         </Web3ReactProvider>
       </div>

@@ -1,9 +1,9 @@
 import React from "react";
-import useSwapInputs from "../../hooks/useSwapInputs";
+import useSwapActionsHandler from "../../hooks/useSwapActionsHandler";
 import styles from "./styles.module.css";
 
 const InterchangeButton = () => {
-  const { interchangeInputAndOutput } = useSwapInputs();
+  const { interchangeInputAndOutput } = useSwapActionsHandler();
   return (
     <div className={styles.buttonContainer}>
       <button className={styles.button} onClick={interchangeInputAndOutput}>

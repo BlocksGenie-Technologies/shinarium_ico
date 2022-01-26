@@ -1,8 +1,8 @@
 import React, { createContext, useState } from "react";
 
-export const SwapInputsContext = createContext({});
+export const SwapActionsHandlerContext = createContext({});
 
-const SwapInputsProvider = ({ children }) => {
+const SwapActionsHandlerProvider = ({ children }) => {
   const [inputToken, setInputToken] = useState(null);
   const [outputToken, setOutputToken] = useState(null);
 
@@ -32,10 +32,10 @@ const SwapInputsProvider = ({ children }) => {
   };
 
   return (
-    <SwapInputsContext.Provider value={value}>
+    <SwapActionsHandlerContext.Provider value={value}>
       {children}
-    </SwapInputsContext.Provider>
+    </SwapActionsHandlerContext.Provider>
   );
 };
 
-export default SwapInputsProvider;
+export default SwapActionsHandlerProvider;
