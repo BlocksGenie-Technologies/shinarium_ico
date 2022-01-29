@@ -4,19 +4,15 @@ import Header from "./../components/Header";
 import TokenInput from "./../components/TokenInput";
 import InterchangeButton from "./../components/InterchangeButton";
 import MainButton from "./../components/MainButton";
-import { useSwapActionsHandler } from "../store/swap/hooks";
+import { useSwapActionsHandler, useSwapState } from "../store/swap/hooks";
 import useDerivatedSwapInfo from "../hooks/useDerivatedSwapInfo";
 import { Field } from "../store/swap";
 
 const App = () => {
-  const {
-    inputToken,
-    setInputToken,
-    outputToken,
-    setOutputToken,
-    setInputAmount,
-    setOutputAmount
-  } = useSwapActionsHandler();
+  const { INPUT, OUTPUT } = Field;
+  const { [INPUT]: inputToken, [OUTPUT]: outputToken } = useSwapState();
+  const { setInputToken, setOutputToken, setInputAmount, setOutputAmount } =
+    useSwapActionsHandler();
 
   const { formattedAmounts } = useDerivatedSwapInfo();
 
@@ -26,14 +22,14 @@ const App = () => {
       <TokenInput
         token={inputToken}
         setToken={setInputToken}
-        amount={formattedAmounts[Field.INPUT]}
+        amount={formattedAmounts[INPUT]}
         setAmount={setInputAmount}
       />
       <InterchangeButton />
       <TokenInput
         token={outputToken}
         setToken={setOutputToken}
-        amount={formattedAmounts[Field.OUTPUT]}
+        amount={formattedAmounts[OUTPUT]}
         setAmount={setOutputAmount}
       />
       <MainButton />

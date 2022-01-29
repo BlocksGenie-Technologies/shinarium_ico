@@ -7,8 +7,19 @@ const TokenInput = ({ token, setToken, amount, setAmount }) => {
   const [openPanel] = useLateralPanel({
     title: "Search a token",
     content: <SearchToken />,
-    onClose: (token) => setToken(token)
+    onClose: (tokenData) => {
+      const {
+        platforms,
+        image: { thumb },
+        symbol
+      } = tokenData;
+      const meta = { thumb, symbol };
+      setToken({ platforms, meta });
+    }
   });
+  const {
+    meta: { thumb, symbol }
+  } = token;
 
   return (
     <div className={styles.inputWrapper}>
@@ -27,10 +38,10 @@ const TokenInput = ({ token, setToken, amount, setAmount }) => {
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
       />
-      {token ? (
+      {symbol ? (
         <button className={styles.changeAsset} onClick={openPanel}>
-          <img width={22} src={token.image.thumb} alt="" />
-          <span className={styles.symbol}>{token.symbol.toUpperCase()}</span>
+          <img width={22} src={thumb} alt="" />
+          <span className={styles.symbol}>{symbol.toUpperCase()}</span>
           <span>▼</span>
         </button>
       ) : (

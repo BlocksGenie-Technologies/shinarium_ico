@@ -6,8 +6,8 @@ export const Field = {
 };
 
 const initialState = {
-  [Field.INPUT]: { currencyId: "" },
-  [Field.OUTPUT]: { currencyId: "" },
+  [Field.INPUT]: { meta: {}, platforms: {} },
+  [Field.OUTPUT]: { meta: {}, platforms: {} },
   independentField: Field.INPUT,
   amount: "",
   recipient: null
@@ -22,16 +22,21 @@ export const counterSlice = createSlice({
       independentField: field,
       amount
     }),
+    setContractAddress: (state, { payload: { field, address } }) => ({
+      ...state,
+      [field]: address
+    }),
     switchInputOutput: (state) => ({
       ...state,
       independentField:
         state.independentField === Field.INPUT ? Field.OUTPUT : Field.INPUT,
-      [Field.INPUT]: { currencyId: state[Field.OUTPUT].currencyId },
-      [Field.OUTPUT]: { currencyId: state[Field.INPUT].currencyId }
+      [Field.INPUT]: state[Field.OUTPUT],
+      [Field.OUTPUT]: state[Field.INPUT]
     })
   }
 });
 
-export const { typeValue, switchInputOutput } = counterSlice.actions;
+export const { typeValue, setContractAddress, switchInputOutput } =
+  counterSlice.actions;
 
 export default counterSlice.reducer;
