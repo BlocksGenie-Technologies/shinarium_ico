@@ -5,26 +5,24 @@ import { ethers } from "ethers";
 import { useSwapState } from "../store/swap/hooks";
 import { Field } from "../store/swap";
 import RouterABI from "../ABIs/Router";
+import useNetworkEnviroment from "./useNetworkEnviroment";
 
 const { Contract, utils } = ethers;
 
 const useDerivatedSwapInfo = () => {
   const [dependentAmount, seDependentAmount] = useState("");
   const { independentField, amount, input, output } = useSwapState();
+  const { platformId, routerAddress } = useNetworkEnviroment();
   const { library } = useWeb3React();
 
   useEffect(() => {
     const calculate = async () => {
-      const inputAddress = input.platforms["binance-smart-chain"];
-      const outputAddress = output.platforms["binance-smart-chain"];
+      const inputAddress = input.platforms[platformId];
+      const outputAddress = output.platforms[platformId];
       if (!library || !inputAddress || !outputAddress)
         return seDependentAmount("");
 
-      const router = new Contract(
-        "0x10ED43C718714eb63d5aA57B78B54704E256024E",
-        RouterABI,
-        library
-      );
+      const router = new Contract(routerAddress, RouterABI, library);
       const parseAmount = utils.parseUnits(amount.toString(), 18);
       const swapDetails = [parseAmount, [inputAddress, outputAddress]];
       let result;
