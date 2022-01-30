@@ -13,14 +13,11 @@ const TokenInput = ({ token, setToken, amount, setAmount }) => {
         image: { thumb },
         symbol
       } = tokenData;
-      const meta = { thumb, symbol };
-      setToken({ platforms, meta });
+      setToken({ platforms, thumb, symbol });
     }
   });
-  const {
-    meta: { thumb, symbol }
-  } = token;
 
+  const { thumb, symbol } = token;
   return (
     <div className={styles.inputWrapper}>
       <input
