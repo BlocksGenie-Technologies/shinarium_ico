@@ -10,6 +10,9 @@ import useNetworkEnviroment from "./useNetworkEnviroment";
 const { Contract, utils } = ethers;
 
 const useDerivatedSwapInfo = () => {
+  const { [Field.INPUT]: inputToken, [Field.OUTPUT]: outputToken } =
+    useSwapState();
+
   const [dependentAmount, seDependentAmount] = useState("");
   const { independentField, amount, input, output } = useSwapState();
   const { platformId, routerAddress } = useNetworkEnviroment();
@@ -40,13 +43,19 @@ const useDerivatedSwapInfo = () => {
 
   const dependentField =
     Field.INPUT === independentField ? Field.OUTPUT : Field.INPUT;
-
   const formattedAmounts = {
     [independentField]: amount,
     [dependentField]: dependentAmount
   };
+  const inputAmount = formattedAmounts[Field.INPUT];
+  const outputAmount = formattedAmounts[Field.OUTPUT];
 
-  return { formattedAmounts };
+  return {
+    inputToken,
+    outputToken,
+    inputAmount,
+    outputAmount
+  };
 };
 
 export default useDerivatedSwapInfo;
