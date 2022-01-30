@@ -6,9 +6,12 @@ import InterchangeButton from "./../components/InterchangeButton";
 import MainButton from "./../components/MainButton";
 import { useSwapActionsHandler } from "../store/swap/hooks";
 import useDerivatedSwapInfo from "../hooks/useDerivatedSwapInfo";
+import useNetworkEnviroment from "../hooks/useNetworkEnviroment";
 
 const App = () => {
-  const { input, output, inputAmount, outputAmount } = useDerivatedSwapInfo();
+  const chainEnv = useNetworkEnviroment();
+  const { input, output, inputAmount, outputAmount } =
+    useDerivatedSwapInfo(chainEnv);
   const { setInputToken, setOutputToken, setInputAmount, setOutputAmount } =
     useSwapActionsHandler();
 

@@ -2,15 +2,13 @@ import { useState, useEffect } from "react";
 
 import { useSwapState } from "../store/swap/hooks";
 import { Field } from "../store/swap";
-import useNetworkEnviroment from "./useNetworkEnviroment";
 import useDEX from "./useDEX";
 
-const useDerivatedSwapInfo = () => {
-  const [dependentAmount, setDependentAmount] = useState("");
-
+const useDerivatedSwapInfo = ({ platformId, routerAddress }) => {
+  const { getAmountsIn, getAmountsOut } = useDEX(routerAddress);
   const { independentField, amount, input, output } = useSwapState();
-  const { getAmountsIn, getAmountsOut } = useDEX();
-  const { platformId } = useNetworkEnviroment();
+
+  const [dependentAmount, setDependentAmount] = useState("");
 
   useEffect(() => {
     const calculate = async () => {

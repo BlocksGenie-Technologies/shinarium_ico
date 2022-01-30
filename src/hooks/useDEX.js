@@ -2,12 +2,10 @@ import { ethers } from "ethers";
 
 import RouterABI from "../ABIs/Router";
 import useContract from "./useContract";
-import useNetworkEnviroment from "./useNetworkEnviroment";
 
 const { utils } = ethers;
 
-const useDEX = () => {
-  const { routerAddress } = useNetworkEnviroment();
+const useDEX = (routerAddress) => {
   const [router] = useContract(routerAddress, RouterABI);
 
   const getAmounts = (cb) => async (amount, path) => {
