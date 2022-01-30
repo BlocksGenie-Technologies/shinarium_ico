@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import useSearchToken from "../../../../hooks/useSearchToken";
 import styles from "./styles.module.css";
 import TokenList from "../TokenList";
@@ -6,19 +6,24 @@ import TokenList from "../TokenList";
 const SearchToken = ({ onClose }) => {
   const { query, coins, isLoading, handleChangeQuery, getCoinDetailsById } =
     useSearchToken();
+  const input = useRef(null);
 
   const handleCoinSelected = async (id) => {
     const coinData = await getCoinDetailsById(id);
     onClose(coinData);
   };
 
+  useEffect(() => {
+    if (input) input.current.focus({ preventScroll: true });
+  }, []);
+
   const waitingForType = !query;
   const successResult = Boolean(coins.length);
   const emptyResult = query && !coins.length && !isLoading;
-
   return (
     <div className={styles.container}>
       <input
+        ref={input}
         className={styles.inputSearch}
         type="text"
         placeholder="Token name, address, symbol"
