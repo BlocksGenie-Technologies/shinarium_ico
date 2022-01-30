@@ -1,7 +1,8 @@
 import React, { useRef, useEffect } from "react";
+
 import useSearchToken from "../../../../hooks/useSearchToken";
-import styles from "./styles.module.css";
 import TokenList from "../TokenList";
+import styles from "./styles.module.css";
 
 const SearchToken = ({ onClose }) => {
   const { query, coins, isLoading, handleChangeQuery, getCoinDetailsById } =

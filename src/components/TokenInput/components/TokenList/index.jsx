@@ -1,5 +1,5 @@
 import React from "react";
-import coingecko from "../../../../utils/coingecko";
+
 import styles from "./styles.module.css";
 
 const Token = ({ name, symbol, thumb, onClick }) => (
