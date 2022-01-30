@@ -1,48 +1,37 @@
 import { useState, useEffect } from "react";
-import { useWeb3React } from "@web3-react/core";
-import { ethers } from "ethers";
 
 import { useSwapState } from "../store/swap/hooks";
 import { Field } from "../store/swap";
-import RouterABI from "../ABIs/Router";
 import useNetworkEnviroment from "./useNetworkEnviroment";
-
-const { Contract, utils } = ethers;
+import useDEX from "./useDEX";
 
 const useDerivatedSwapInfo = () => {
-  const { [Field.INPUT]: inputToken, [Field.OUTPUT]: outputToken } =
-    useSwapState();
-
   const [dependentAmount, setDependentAmount] = useState("");
+
   const { independentField, amount, input, output } = useSwapState();
-  const { platformId, routerAddress } = useNetworkEnviroment();
-  const { library } = useWeb3React();
+  const { getAmountsIn, getAmountsOut } = useDEX();
+  const { platformId } = useNetworkEnviroment();
 
   useEffect(() => {
     const calculate = async () => {
       const inputAddress = input.platforms[platformId];
       const outputAddress = output.platforms[platformId];
-      if (!library || !inputAddress || !outputAddress)
-        return setDependentAmount("");
+      if (!inputAddress || !outputAddress) return setDependentAmount("");
 
-      const router = new Contract(routerAddress, RouterABI, library);
-      const parseAmount = utils.parseUnits(amount.toString(), 18);
-      const swapDetails = [parseAmount, [inputAddress, outputAddress]];
-      let result;
-      if (independentField === Field.INPUT) {
-        [, result] = await router.getAmountsOut(...swapDetails);
-      } else {
-        [result] = await router.getAmountsIn(...swapDetails);
-      }
-      const formattedOutput = utils.formatUnits(result, 18);
-      setDependentAmount(formattedOutput);
+      const calculateDependent =
+        independentField === Field.INPUT ? getAmountsOut : getAmountsIn;
+      const dependent = await calculateDependent(amount, [
+        inputAddress,
+        outputAddress
+      ]);
+      setDependentAmount(dependent);
     };
-
     calculate();
-  }, [input, output, amount, library]);
+  }, [input, output, amount, getAmountsIn, getAmountsOut]);
 
   const dependentField =
     Field.INPUT === independentField ? Field.OUTPUT : Field.INPUT;
+
   const formattedAmounts = {
     [independentField]: amount,
     [dependentField]: dependentAmount
@@ -51,8 +40,8 @@ const useDerivatedSwapInfo = () => {
   const outputAmount = formattedAmounts[Field.OUTPUT];
 
   return {
-    inputToken,
-    outputToken,
+    input,
+    output,
     inputAmount,
     outputAmount
   };
