@@ -13,7 +13,7 @@ const useDerivatedSwapInfo = () => {
   const { [Field.INPUT]: inputToken, [Field.OUTPUT]: outputToken } =
     useSwapState();
 
-  const [dependentAmount, seDependentAmount] = useState("");
+  const [dependentAmount, setDependentAmount] = useState("");
   const { independentField, amount, input, output } = useSwapState();
   const { platformId, routerAddress } = useNetworkEnviroment();
   const { library } = useWeb3React();
@@ -23,7 +23,7 @@ const useDerivatedSwapInfo = () => {
       const inputAddress = input.platforms[platformId];
       const outputAddress = output.platforms[platformId];
       if (!library || !inputAddress || !outputAddress)
-        return seDependentAmount("");
+        return setDependentAmount("");
 
       const router = new Contract(routerAddress, RouterABI, library);
       const parseAmount = utils.parseUnits(amount.toString(), 18);
@@ -35,7 +35,7 @@ const useDerivatedSwapInfo = () => {
         [result] = await router.getAmountsIn(...swapDetails);
       }
       const formattedOutput = utils.formatUnits(result, 18);
-      seDependentAmount(formattedOutput);
+      setDependentAmount(formattedOutput);
     };
 
     calculate();
