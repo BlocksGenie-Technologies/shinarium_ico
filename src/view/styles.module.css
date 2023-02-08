@@ -8,10 +8,15 @@
   margin: 5px auto;
 }
 
+img {
+  border-radius: 50%;
+}
+
 .input {
   border: none;
   background: inherit;
   font-size: 25px;
+  min-width: 200px;
 }
 .input:focus-visible {
   outline: none;

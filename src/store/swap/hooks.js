@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { typeValue, switchInputOutput, Field, setContractAddress } from ".";
+import { typeValue, Field } from ".";
 
 export const useSwapState = () => useSelector((state) => state.swap);
 
@@ -17,26 +17,10 @@ export const useSwapActionsHandler = () => {
     []
   );
 
-  const setInputToken = useCallback(
-    (address) => dispatch(setContractAddress({ field: Field.INPUT, address })),
-    []
-  );
-
-  const setOutputToken = useCallback(
-    (address) => dispatch(setContractAddress({ field: Field.OUTPUT, address })),
-    []
-  );
-
-  const switchInputAndOutput = useCallback(
-    () => dispatch(switchInputOutput()),
-    []
-  );
+ 
 
   return {
-    setInputToken,
-    setOutputToken,
     setInputAmount,
-    setOutputAmount,
-    switchInputAndOutput
+    setOutputAmount
   };
 };

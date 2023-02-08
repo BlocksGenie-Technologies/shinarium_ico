@@ -1,36 +1,50 @@
-import React from "react";
+import {React, useState} from "react";
 
 import Header from "./../components/Header";
-import TokenInput from "./../components/TokenInput";
 import InterchangeButton from "./../components/InterchangeButton";
 import MainButton from "./../components/MainButton";
-import { useSwapActionsHandler } from "../store/swap/hooks";
-import useDerivatedSwapInfo from "../hooks/useDerivatedSwapInfo";
-import useNetworkEnviroment from "../hooks/useNetworkEnviroment";
+import styles from "./styles.module.css";
 
 const App = () => {
-  const chainEnv = useNetworkEnviroment();
-  const { input, output, inputAmount, outputAmount } =
-    useDerivatedSwapInfo(chainEnv);
-  const { setInputToken, setOutputToken, setInputAmount, setOutputAmount } =
-    useSwapActionsHandler();
+  const[amount, setAmount]= useState(0);
 
   return (
     <>
       <Header />
-      <TokenInput
-        token={input}
-        setToken={setInputToken}
-        amount={inputAmount}
-        setAmount={setInputAmount}
-      />
+      <div className={styles.inputWrapper}>
+        <input
+          id="token"
+          className={styles.input}
+          inputMode="decimal"
+          autoComplete="off"
+          autoCorrect="off"
+          type="text"
+          pattern="^[0-9]*[.,]?[0-9]*$"
+          placeholder="0.0"
+          minLength="1"
+          maxLength="79"
+          spellCheck="false"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+        />
+        <button className={styles.changeAsset}>
+          <img width={22} src={"https://assets.coingecko.com/coins/images/825/thumb/bnb-icon2_2x.png?1644979850"} alt="" />
+          <span className={styles.symbol}>{"BNB"}</span>
+        </button>
+      </div>
       <InterchangeButton />
-      <TokenInput
-        token={output}
-        setToken={setOutputToken}
-        amount={outputAmount}
-        setAmount={setOutputAmount}
-      />
+      <div className={styles.inputWrapper}>
+        <input
+          id="token"
+          className={styles.input}
+          value={(amount * 3622222).toFixed(3)}
+          disabled
+        />
+        <button className={styles.changeAsset}>
+          <img width={22} src={"https://i.imgur.com/PbLgy6N.jpeg"} alt="" />
+          <span className={styles.symbol}>{"SHINA"}</span>
+        </button>
+      </div>
       <MainButton />
     </>
   );

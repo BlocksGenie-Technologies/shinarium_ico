@@ -3,7 +3,6 @@ import { Web3ReactProvider } from "@web3-react/core";
 import { Web3Provider } from "@ethersproject/providers";
 import { Provider } from "react-redux";
 
-import LateralPanelProvider from "./providers/LateralPanelProvider";
 import AuthProvider from "./providers/AuthProvider";
 import Swap from "./view/Swap";
 import { store } from "./store";
@@ -22,9 +21,7 @@ const App = () => {
         <Web3ReactProvider getLibrary={getLibrary}>
           <AuthProvider>
             <Provider store={store}>
-              <LateralPanelProvider>
                 <Swap />
-              </LateralPanelProvider>
             </Provider>
           </AuthProvider>
         </Web3ReactProvider>

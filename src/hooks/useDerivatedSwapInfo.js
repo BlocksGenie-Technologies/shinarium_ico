@@ -6,14 +6,14 @@ import useDEX from "./useDEX";
 
 const useDerivatedSwapInfo = ({ platformId, routerAddress }) => {
   const { getAmountsIn, getAmountsOut } = useDEX(routerAddress);
-  const { independentField, amount, input, output } = useSwapState();
+  const { independentField, amount} = useSwapState();
 
   const [dependentAmount, setDependentAmount] = useState("");
 
   useEffect(() => {
     const calculate = async () => {
-      const inputAddress = input.platforms[platformId];
-      const outputAddress = output.platforms[platformId];
+      const inputAddress = "";
+      const outputAddress = "0xe9e7cea3dedca5984780bafc599bd69add087d56";
       if (!inputAddress || !outputAddress) return setDependentAmount("");
 
       const calculateDependent =
@@ -25,7 +25,7 @@ const useDerivatedSwapInfo = ({ platformId, routerAddress }) => {
       setDependentAmount(dependent);
     };
     calculate();
-  }, [input, output, amount, getAmountsIn, getAmountsOut]);
+  }, [amount, getAmountsIn, getAmountsOut]);
 
   const dependentField =
     Field.INPUT === independentField ? Field.OUTPUT : Field.INPUT;
@@ -38,8 +38,6 @@ const useDerivatedSwapInfo = ({ platformId, routerAddress }) => {
   const outputAmount = formattedAmounts[Field.OUTPUT];
 
   return {
-    input,
-    output,
     inputAmount,
     outputAmount
   };
