@@ -1,0 +1,75 @@
+.inputWrapper {
+  background-color: var(--background-soft);
+  width: 100%;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin: 5px auto;
+}
+
+img {
+  border-radius: 50%;
+}
+
+.input {
+  border: none;
+  background: inherit;
+  font-size: 25px;
+  min-width: 200px;
+}
+.input:focus-visible {
+  outline: none;
+}
+.changeAsset {
+  background-color: var(--background-mid);
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+.changeAsset:hover {
+  background-color: var(--background-mid-hover);
+}
+.noAssetButton {
+  background-color: var(--background-primary);
+  color: white;
+}
+.noAssetButton span {
+  font-size: 15px;
+  margin: 0 2px;
+}
+.noAssetButton:hover {
+  background-color: var(--background-primary-hover);
+}
+.symbol {
+  margin: 0 5px;
+}
+
+.buttonContainer {
+  position: relative;
+}
+.button {
+  position: absolute;
+  border: 5px solid white;
+  border-radius: 8px;
+  transform: translate(-50%, -50%);
+  padding: 5px;
+  background-color: var(--background-mid);
+}
+.button:hover {
+  background-color: var(--background-mid-hover);
+}
+
+.mainButton {
+  border: none;
+  width: 100%;
+  border-radius: 20px;
+  padding: 15px;
+  font-size: 20px;
+  color: var(--primary-font);
+  background-color: var(--primary-disabled);
+}
+.mainButton:hover {
+  background-color: var(--primary-disabled-hover);
+}

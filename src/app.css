@@ -32,3 +32,17 @@
   -webkit-box-shadow: 1px -1px 400px -31px rgba(0, 0, 0, 0.24);
   -moz-box-shadow: 1px -1px 400px -31px rgba(0, 0, 0, 0.24);
 }
+
+.mainButton {
+  border: none;
+  width: 100%;
+  border-radius: 20px;
+  padding: 15px;
+  font-size: 20px;
+  color: var(--primary-font);
+  background-color: var(--primary-disabled);
+}
+.mainButton:hover {
+  background-color: var(--primary-disabled-hover);
+}
+
