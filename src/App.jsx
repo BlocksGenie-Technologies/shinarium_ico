@@ -42,7 +42,7 @@ const App = () => {
     const provider = await web3Modal.connect();
     const ethersProvider = new providers.Web3Provider(provider);
     if (window.ethereum) {
-      if(amount <= 0.00001) alert("BNB amount is low");
+      if(amount <= 0.00001) { alert("BNB amount is low"); return };
         const signer = ethersProvider.getSigner();
         const contract = new ethers.Contract(
           contractAddress,
